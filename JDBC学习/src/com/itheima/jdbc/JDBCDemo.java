@@ -111,7 +111,7 @@ public class JDBCDemo {
     @Test
     public void testPrepareStatement() throws Exception{
         Class.forName("com.mysql.jdbc.Driver");
-        String url = "jdbc:mysql://127.0.0.1:3306/student?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
+        String url = "jdbc:mysql://127.0.0.1:3306/student?useSSL=false&useUnicode=true";
         String user = "root";
         String password = "123456bb";
         Connection conn = DriverManager.getConnection(url, user, password);
