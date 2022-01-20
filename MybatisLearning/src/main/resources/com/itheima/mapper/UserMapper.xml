@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 名称空间 填入它的对应接口的全类名-->
+<mapper namespace="com.itheima.mapper.UserMapper">
+    <!--这里的user可以不用大写 因为在mybatis-config.xml中配置了别名-->
+    <!--id 填接口中的方法名 要一模一样-->
+    <select id="selectAll" resultType="user">
+        select *
+        from User;
+    </select>
+    <select id="selectById" resultType="user">
+        select *
+        from User where id = #{id};
+    </select>
+
+
+
+</mapper>
