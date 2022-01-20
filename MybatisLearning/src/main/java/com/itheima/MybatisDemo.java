@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,8 +30,9 @@ public class MybatisDemo {
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         List<User> users = userMapper.selectAll();
         System.out.println(users);
-
+new ArrayList<>().add(1);
         //4.释放资源
         sqlSession.close();
     }
+
 }
