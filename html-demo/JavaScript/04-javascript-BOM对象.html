@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*BOM：Browser Object Model 浏览器对象模型,也就是JavaScript将浏览器的各个组成部分封装为对象。
+     我们要操作浏览器的各个组成部分就可以通过操作 BOM 中的对象来实现。
+     比如：我现在想将浏览器地址栏的地址改为 `https://www.itheima.com`
+     就可以通过使用BOM中定义的 `Location` 对象的 `href` 属性
+     代码：`location.href = "https://itheima.com";`
+     * BOM 中包含了如下对象:
+     *  Window：浏览器窗口对象
+     *  Navigator：浏览器对象
+     *  Screen：屏幕对象
+     *  History：历史记录对象
+     *  Location：地址栏对象
+     * BOM中的 Navigator 对象和 Screen 对象基本不会使用, 所以我们只对Window、History、Location对象进行讲解。
+     * */
+
+    /* window对象
+     * window 对象是 JavaScript 对浏览器的窗口进行封装的对象。
+     *   window对象的获取：该对象不需要创建可直接使用，其中 "window." 可以省略。
+     *   比如我们之前使用的alert()函数，其实就是 window 对象的函数，在调用时可以写成如下两种
+     *      方式一：显式使用window对象调用
+     *         window.alert("abc)
+     *      方式二：隐式调用
+     *         alert("abc")
+     *
+     *   window对象属性: 提供了用于获取其他 BOM 组成对象的属性,
+     *    例如"window.location"获取location对象，而"winodw."可以省略，可简写为location
+     *    window.history  window.navigator  window.screen
+     *
+     *   window对象函数：很多都不常用，下面列举了一些比较常用的函数
+     *     alert()：显示带有一段消息和一个确认按钮的警告框
+     *     confirm("你想传达的消息")：显示带有一段消息以及确认按钮和取消按钮的对话框
+     *     setTimeout(function,毫秒值)：在一定的时间间隔后执行一个function，只执行一次
+     *     setInterval(function,毫秒值)：在一定的时间间隔后执行一个function，循环执行
+     */
+    //window.alert("abc")
+    //alert("abc")
+    window.location
+    window.history
+    window.navigator
+    window.screen
+
+    //var select = confirm("您确认购买吗");
+    //alert(select)
+
+    // setTimeout(function () {
+    //     //alert("setTimeout方法：已经过去5秒了")
+    // }, 5000)
+
+    // setInterval(function () {
+    //     //alert("hehe")
+    // }, 1000)
+
+
+    /* History对象
+    *  History 对象是 JavaScript 对历史记录进行封装的对象。
+    *    History对象的获取:
+    *      使用 window.history获取，其中window. 可以省略
+    *    History对象的函数:
+    *      这两个函数我们平时在访问其他的一些网站时经常使用对应的效果
+    *      back(): 加载history列表中的前一个url
+    *      forward()：加载history列表中的下一个url
+    * */
+
+
+    /* Location对象
+    *  Location 对象是 JavaScript 对地址栏封装的对象。可以通过操作该对象，跳转到任意页面。
+    *    Location对象的获取：使用window.location获取，其中window. 可以省略
+    *       window.location.方法();
+    *       location.方法();
+    *    Location对象属性: Location对象提供了很多属性。以后常用的只有一个属性 `href`
+    *      设置href的值会导航到提供的URL。如果你想要重定向，请使用location.replace()。
+    *      它与设置href属性值的区别在于，当使用location.replace()方法时，导航到给定的 URL 后，
+    *      当前页面不会保存在会话历史中———这意味着用户将无法使用返回按钮导航到它。
+    * */
+
+    //alert("要跳转了")
+    //location.href = "https://www.baidu.com/"
+    //location.replace("https://www.baidu.com/")
+
+    document.write("3秒跳转到首页...");
+    setTimeout(function (){
+        location.href = "https://www.baidu.com"
+    },3000);
+</script>
+</body>
+</html>

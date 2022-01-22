@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**JavaScript 提供了很多对象供使用者来使用。这些对象总共分类三类
+     *  基本对象
+     *  BOM对象
+     *  DOM对象
+     * */
+
+
+    /** 基本数据对象：Array对象
+     *   数组的定义格式有两种：
+     *    方式1：var 变量名 = new Array(元素列表);
+     *    方式2：var 变量名 = [元素列表];
+     *
+     *   元素访问:
+     *    arr[索引] = 值;
+     *
+     *   特点：
+     *    JavaScript中的数组相当于Java中集合，数组的长度是可以变化的，
+     *    而JavaScript是弱类型，所以可以存储任意的类型的数据。
+     *
+     *   属性：
+     *    以length属性为例子，该数组可以动态的获取数组的长度。而有这个属性，我们就可以遍历数组了
+     *
+     *   方法：
+     *    以push函数和splice函数为例子
+     *       push函数：给数组添加元素，也就是在数组的末尾添加元素
+     *         参数表示要添加的元素
+     *       splice函数：删除元素
+     *         参数1：索引。表示从哪个索引位置删除
+               参数2：个数。表示删除几个元素
+     * */
+    var arr1 = new Array(10, 20, 30, 40)
+    var arr2 = [10, 20, 30, 40]
+    //alert(arr1[0])  //10
+    //alert(arr2[1])  //20
+
+    //数组的长度是 变长 的
+    var arr3 = [1, 2, 3];
+    arr3[10] = 10;
+    //alert(arr3[10]); // 10
+    //alert(arr3[9]);  //undefined  在JavaScript中没有赋值的话，默认就是 `undefined`。
+
+    /*for (let i = 0; i < arr2.length; i++) {
+        alert(arr2[i])
+    }*/
+
+    arr2.push(50)
+    //alert(arr2)   //10,20,30,40,50
+
+    arr2.splice(3, 2)  //删除元素 第一个参数代表从哪个索引位置删除 第二个参数代表删除几个元素
+    //alert(arr2)   //10,20,30
+
+
+    /**基本数据对象：String对象
+     * 创建方式有两种
+     *   方式1：
+     *     var 变量名 = new String(s);
+     *   方式2：
+     *     var 变量名 = "数组"
+     *
+     * 属性：
+     *   列举了一个属性 `length` ，该属性是用于动态的获取字符串的长度
+     *
+     * 函数：
+     *   列举了三个方法。
+     *     charAt("索引位置"): 返回在指定索引位置上的字符
+     *     indexOf("字符"):  检索字符串，返回该字符串的索引位置
+     *     trim()：去掉字符串两端的空格
+     *     用户在输入用户名和密码时，可能会习惯的输入一些空格，这样在我们后端程序中判断用户名和密码是否正确，
+     *     结果肯定是失败。所以我们一般都会对用户输入的字符串数据进行去除前后空格的操作。
+     * */
+    var str4 = "abcdefg"
+    //alert(str4.length)  //7
+    var str5 = '  abc   '
+    //alert(1 + str5 + 1)   //1  abc   1
+    //alert(1 + str5.trim() + 1)  //1abc1
+
+
+    /**
+     * 自定义对象
+     *   创建方式：
+     *     var 对象名称 = {
+     *     属性名称1:属性值1,
+     *     属性名称2:属性值2,
+     *     ...,
+     *     函数名称:function (形参列表){},
+     * 	   ...
+     *     };
+     *
+     *   调用属性的格式：
+     *      对象名.属性名
+     *      对象名.函数名()
+     */
+
+    var person = {
+        name: "fengzitao",
+        age: 10,
+        eat: function () {
+            alert("干饭")
+        }
+    }
+    //alert(person.name)
+    //alert(person.age)
+    //person.eat()
+
+</script>
+</body>
+</html>

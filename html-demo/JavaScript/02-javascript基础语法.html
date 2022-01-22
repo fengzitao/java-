@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <!--
+  *区分大小写：与 Java 一样，变量名、函数名以及其他一切东西都是区分大小写的
+  * 每行结尾的分号可有可无
+    如果一行上写多个语句时，必须加分号用来区分多个语句。
+  * 注释
+    单行注释：// 注释内容
+    多行注释：/* 注释内容 */
+     注意：JavaScript 没有文档注释
+  * 大括号表示代码块
+   下面语句大家肯定能看懂，和 java 一样 大括号表示代码块。
+   if (count == 3) {
+       alert(count);
+    }
+   -->
+    <script>
+    /**输出语句
+    * 使用 window.alert() 写入警告框**
+    * 使用 document.write() 写入 HTML 输出
+    * 使用 console.log() 写入浏览器控制台
+    */
+
+        //window.alert("hello js") //写入警告框
+        document.write("hello js") //写入html页面
+        console.log("hello js1")//写入控制台
+
+    /**变量
+    * JavaScript 中用 var 关键字（variable 的缩写）来声明变量。
+    * 格式 `var 变量名 = 数据值;`。
+    * 而在JavaScript 是一门弱类型语言，变量可以存放不同类型的值；
+    * 如下在定义变量时赋值为数字数据，还可以将变量的值改为字符串类型的数
+    * */
+
+        var test = 20
+        test = "张三"
+
+
+    /**js中的变量名命名也有如下规则，和java语言基本都相同
+    * 组成字符可以是任何字母、数字、下划线（_）或美元符号（$）
+    * 数字不能开头
+    * 建议使用驼峰命名
+    */
+
+
+    /**JavaScript 中 `var` 关键字有点特殊，有以下地方和其他语言不一样
+    * 作用域：全局变量
+      {
+        var age = 20;
+      }
+      alert(age);  //在代码块中定义的age 变量，在代码块外边还可以使用
+    * 变量可以重复定义
+      {
+        var age = 20;
+        var age = 30; //JavaScript 会用 30 将之前 age 变量的 20 替换掉
+      }
+      alert(age); //打印的结果是 3
+    * 针对如上的问题，ECMAScript 6 新增了 `let `关键字来定义变量。
+    * 它的用法类似于 `var`，但是所声明的变量，只在 `let` 关键字所在的代码块内有效，且不允许重复声明。
+      {
+        let age = 20;
+      }
+        alert(age);  //会出现报错
+      而如果在代码块中定义两个同名的变量，IDEA 开发工具就直接报错了
+      {
+        let age = 20   //会报错
+        let age = 30   //会报错
+      }
+    * ECMAScript 6 新增了 const关键字，用来声明一个只读的常量。
+      一旦声明，常量的值就不能改变。通过下面的代码看一下常用的特点就可以了
+      const PI = 3.14
+      PI = 3.15  //在ide编译时就立刻报错了 不能修改常量的值
+    * */
+
+        const PI = 3.14
+        //PI = 3.15  //会报错
+
+
+    /**数据类型
+    * JavaScript 中提供了两类数据类型：原始类型 和 引用类型。
+      使用 typeof 运算符可以获取数据类型
+      alert(typeof age); 以弹框的形式将 age 变量的数据类型输出
+      原始数据类型：
+      number：数字（整数、小数、NaN(Not a Number)）
+      string：字符、字符串，单双引号皆可
+      boolean：布尔。true，false
+      null：对象为空
+      undefined：当声明的变量未初始化时，该变量的默认值是 undefined
+    * */
+
+        let age = 10
+        let price = 10.99
+        //alert(typeof age)  //结果是：number
+        //alert(typeof price)  //结果是：number
+
+        let ch = 'a'
+        let name = '张三'
+        let addr = "北京"
+        //alert(typeof ch)    //结果是  string
+        //alert(typeof name)  //结果是  string
+        //alert(typeof addr)  //结果是  string
+        //注意：在 js 中 双引号和单引号都表示字符串类型的数据
+
+        let flag = true;
+        let flag1 = false;
+        //alert(typeof flag); //结果是 boolean
+        //alert(typeof flag2); //结果是 boolean
+
+        let obj = null
+        //alert(typeof obj)  //结果是 object
+
+        let a
+        //alert(typeof a)    //结果是 undefined
+
+
+    /** 运算符
+      一元运算符：++，--
+      算术运算符：+，-，*，/，%
+      赋值运算符：=，+=，-=…
+      关系运算符：>，<，>=，<=，!=，\==，===…
+      逻辑运算符：&&，||，!
+      三元运算符：条件表达式 ? true_value : false_value
+    */
+
+    /** ==和===区别
+        ==
+        1. 判断类型是否一样，如果不一样，则进行类型转换
+        2. 再去比较其值
+        ===  js 中的全等于
+        1. 判断类型是否一样，如果不一样，直接返回false
+        2. 再去比较其值
+     **/
+
+        var age1 = 20
+        var age2 = "20"
+        //alert(age1 == age2)   //true
+        //alert(age1 === age2)  //fals
+
+    /** 类型转换
+       其他类型转为number
+       string 转换为 number 类型：按照字符串的字面值，转为数字。如果字面值不是数字，则转为NaN
+       将string转换为 number 有两种方式：
+        (1)使用 `+` 正号运算符：
+            var str = +"20";
+            var str1 = str + 1
+            alert(typeof str1)  //number
+            alert(str1) //21
+        (2)使用 `parseInt()` 函数(方法)：
+            var str = "20";
+            alert(parseInt(str) + 1);
+
+       将boolean转换为number类型：true 转为1，false转为0
+          var flag = +false;
+          alert(flag); // 0
+
+       将其他类型转为boolean
+          number 类型转换为 boolean 类型：0和NaN转为false，其他的数字转为true
+          string 类型转换为 boolean 类型：空字符串转为false，其他的字符串转为true
+          null类型转换为 boolean 类型是 false
+          undefined 转换为 boolean 类型是 false
+       使用场景：在 Java 中使用字符串前，一般都会先判断字符串不是null，
+       并且不是空字符才会做其他的一些操作，JavaScript也有类型的操作，代码如下：
+          var str = "abc";
+          //健壮性判断
+          if(str != null && str.length > 0){
+              alert("转为true");
+          }else {
+              alert("转为false");
+          }
+          由于 JavaScript 会自动进行类型转换，所以上述的判断可以进行简化，代码如下：
+          var str = "abc";
+          //健壮性判断
+          if(str){
+              alert("转为true");
+          }else {
+              alert("转为false");
+          }
+     **/
+
+        var str = +"20";   //这里的'+'为正号运算符
+        var str1 = str + 1
+        //alert(typeof str1) //number
+        //alert(str1)  //21
+        var flag2 = +false
+        var flag3 = +true
+        //alert(flag2); // 0
+        //alert(flag3); // 1
+        var flag4 = undefined;
+        if(flag4){
+            //alert("转为true");
+        }else {
+            //alert("转为false");
+        }
+        str = "abc";
+        //健壮性判断
+        /*if(str){
+            alert("转为true");
+        }else {
+            alert("转为false");
+        }*/
+
+
+    /** 流程控制语句
+       JavaScript 中提供了和 Java 一样的流程控制语句，如下
+        * if
+        * switch
+        * for
+        * while
+        * dowhile
+     * */
+
+        /*var count = 3;
+        if (count == 3) {
+            alert(count);
+        }*/
+
+        //switch语句
+        /*var num = 3;
+        switch (num) {
+            case 1:
+                alert("星期一");
+                break;
+            case 2:
+                alert("星期二");
+                break;
+            case 3:
+                alert("星期三");
+                break;
+            case 4:
+                alert("星期四");
+                break;
+            case 5:
+                alert("星期五");
+                break;
+            case 6:
+                alert("星期六");
+                break;
+            case 7:
+                alert("星期日");
+                break;
+            default:
+                alert("输入的星期有误");
+                break;
+        }*/
+
+       //for循环
+       /*var sum = 0;
+        for (let i = 1; i <= 100; i++) { //建议for循环小括号中定义的变量使用let
+            sum += i;
+        }
+        alert(sum);*/
+
+        //while循环
+        /*var sum = 0;
+        var i = 1;
+        while (i <= 100) {
+            sum += i;
+            i++;
+        }
+        alert(sum);*/
+
+        //dowhile循环
+        /*var sum = 0;
+        var i = 1;
+        do {
+            sum += i;
+            i++;
+        }
+        while (i <= 100);
+        alert(sum);*/
+
+
+       /**函数：函数（就是Java中的方法）是被设计为执行特定任务的代码块；
+       JavaScript 函数通过 function 关键词进行定义。
+       函数定义格式有两种：
+        方式1：
+        function 函数名(参数1,参数2..){
+                要执行的代码
+        }
+        方式2：
+        var 函数名 = function (参数列表){
+                要执行的代码
+        }
+        形式参数不需要类型。因为JavaScript是弱类型语言，在每个参数前加上 var 也没有任何意义。
+        返回值也不需要定义类型，可以在函数内部直接使用return返回即可
+
+        函数调用：函数名称(实际参数列表)
+        注意：JS中，函数调用可以传递任意个数参数，例如
+        let result = add(1,2,3);
+        它是将数据 1 传递给了变量a，将数据 2 传递给了变量 b，而数据 3 没有变量接收。
+        */
+
+        function add(a, b){
+            return a + b;
+        }
+
+        let result = add(10,20)
+        //alert(result)  //30
+        result = add(10,20,30,40)  //不会报错
+        //alert(result)  //30
+
+    </script>
+</body>
+</html>

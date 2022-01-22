@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--第一种方式，在HTML中，JavaScript 代码必须位于 `<script>` 与 `</script>` 标签之间，如下图-->
+    <!--第二种方式，就是引入外部的js文件 它是最早执行的javascript代码，
+        在页面中引入外部js文件时，标签不能自闭合，不能写成 `<script src="js/demo.js" />`
+        外部脚本不能包含 `<script>` 标签，在js文件中直接写 js 代码即可，不要在 js文件 中写 <script> 标签
+    -->
+    <script src="js/demo.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--head标签里面的javascript代码第二执行-->
+    <script>
+        alert("hello js1")
+    </script>
+</head>
+<body>
+<!--body标签里面的代码第三执行-->
+<!--一般把脚本置于 <body> 元素的底部，可改善显示速度
+因为浏览器在加载页面的时候会从上往下进行加载并解析。 我们应该让用户看到页面内容，然后再展示动态的效果。-->
+<script>
+    alert("hello js2")
+</script>
+</body>
+</html>
+<!--html标签外面的javascript代码最后执行-->
+<script>
+    alert("hello js3")
+</script>

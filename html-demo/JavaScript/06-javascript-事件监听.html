@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 事件监听是JavaScript 可以在事件被侦测到时==执行一段逻辑代码。
+    例如当我们点击 `开灯` 按钮，就需要通过 js 代码实现替换图片
+    再比如下图输入框，当我们输入了用户名 `光标离开` 输入框，就需要通过 js 代码对输入的内容进行校验，
+    没通过校验就在输入框后提示 `用户名格式有误!`
+-->
+
+<!-- 事件绑定
+     JavaScript提供了两种事件绑定方式：
+       方式一：通过HTML标签中的事件属性进行绑定
+              有一个按钮元素，onclick就是按钮元素的单击事件的事件属性。
+              onclick=on() 表示该点击事件绑定了一个名为 on() 的函数
+       方式二：通过 DOM 元素属性绑定
+
+     常见事件
+    | onclick     | 鼠标单击事件             |
+    | ----------- | ------------------------ |
+    | onblur      | 元素失去焦点             |
+    | onfocus     | 元素获得焦点             |
+    | onload      | 某个页面或图像被完成加载 |
+    | onsubmit    | 当表单提交时触发该事件   |
+    | onmouseover | 鼠标移到某元素之上     |
+    | onmouseout  | 鼠标从某元素移开         |
+-->
+<img id="img1" src="imgs/off.gif"/>
+<input type="button" onclick=on() value="开灯">
+<input type="button" onclick=off() value="关灯">
+<input type="submit" id="register" value="注册">
+<input type="button" id="btn" value="点击"> <br><br>
+<div class="form-div">
+    <div class="reg-content">
+        <h1>欢迎注册</h1>
+        <span>已有帐号？</span> <a href="#">登录</a>
+    </div>
+    <form id="reg-form" action="#" method="get">
+        <table>
+            <tr>
+                <td>用户名</td>
+                <td class="inputs">
+                    <input type="text" name="username" id="username" onblur="checkUserName()">
+                    <span id="username_err" class="err_msg" style="color: red; display: none;">用户名不太受欢迎</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>密码</td>
+                <td class="inputs">
+                    <input name="password" type="password" id="password" onblur="checkPassword()">
+
+                    <span id="password_err" class="err_msg" style="color:red; display: none;">密码格式有误</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>手机号</td>
+                <td class="inputs">
+                    <input name="tel" type="text" id="tel" onblur="checkTelPhone()">
+                    <span id="tel_err" class="err_msg" style="color: red; display: none;">手机号格式有误</span>
+                </td>
+            </tr>
+        </table>
+        <div class="buttons">
+            <input value="注 册" type="submit" id="reg_btn">
+        </div>
+        <br class="clear">
+    </form>
+</div>
+<script>
+    //方式一：通过HTML标签中的事件属性进行绑定
+    function on() {
+        var img1 = document.getElementById("img1");
+        img1.src = "imgs/on.gif"
+    }
+
+    function off() {
+        var img1 = document.getElementById("img1");
+        img1.src = "imgs/off.gif"
+    }
+
+    //方式二：通过 DOM 元素属性绑定
+    document.getElementById("btn").onclick = function () {
+        alert("我被点了");
+    }
+
+    //onfocus事件 获得焦点事件。
+    //当点击了输入框后，输入框就获得了焦点。而下图示例是当获取焦点后会更改输入框的背景颜色。
+
+    //当点击了输入框后，输入框就获得了焦点；再点击页面其他位置，那输入框就失去焦点了。
+    //下图示例是将输入的文本转换为大写。
+
+    //onsubmit 表单提交事件
+    //有如下注册页面，对表单进行校验，如果输入的用户名、密码、手机号符合规则，则允许提交；
+    //如果不符合规则，则不允许提交。
+    document.getElementById("register").onsubmit = function () {
+        //表单校验工作
+        //onsubmit 返回true，则表单会被提交，返回false，则表单不提交
+        return true;
+    }
+
+    //校验用户名。当用户名输入框失去焦点时，判断输入的内容是否符合 `长度是 6-12 位` 规则，不符合使 `id='username_err'` 的span标签显示出来，给出用户提示。
+    //校验密码。当密码输入框失去焦点时，判断输入的内容是否符合 `长度是 6-12 位` 规则，不符合使 `id='password_err'` 的span标签显示出来，给出用户提示。
+    //校验手机号。当手机号输入框失去焦点时，判断输入的内容是否符合 `长度是 11 位` 规则，不符合使 `id='tel_err'` 的span标签显示出来，给出用户提示。
+    var username = document.getElementById("username")
+    var username_err = document.getElementById("username_err");
+    function checkUserName (){
+        //获得username的值
+        var uname = username.value.trim();
+        var flag = uname.length >= 6 && uname.length <= 12
+        if(flag) {
+            //符合规则
+            username_err.style.display = 'nome'
+        }else {
+            username_err.style.display = ''
+        }
+        return flag
+    }
+
+    //验证密码是否符合规则
+    //获取密码的输入框
+    var passwordInput = document.getElementById("password");
+    var password_err = document.getElementById("password_err");
+    //绑定onblur事件 失去焦点
+    function checkPassword(){
+        //获取用户输入的密码
+        var pw = passwordInput.value.trim();
+
+        //判断密码是否符合规则：长度 6~12
+        var flag = pw.length >= 6 && pw.length <= 12
+        if (flag) {
+            //符合规则
+            password_err.style.display = 'none';
+        } else {
+            //不合符规则
+            password_err.style.display = '';
+        }
+        return flag
+    }
+
+    //验证手机号是否符合规则
+    //获取手机号的输入框
+    var telInput = document.getElementById("tel");
+    var tel_err = document.getElementById("tel_err");
+    //绑定onblur事件 失去焦点
+    function checkTelPhone() {
+        //获取用户输入的手机号
+        var tel = telInput.value.trim();
+
+        //判断手机号是否符合规则：长度 11
+        var flag = tel.length == 11
+        if (flag) {
+            //符合规则
+            tel_err.style.display = 'none';
+        } else {
+            //不合符规则
+            tel_err.style.display = '';
+        }
+        return flag
+    }
+    
+    
+    //当用户点击 `注册` 按钮时，需要同时对输入的 `用户名`、`密码`、`手机号` ，
+    //如果都符合规则，则提交表单；如果有一个不符合规则，则不允许提交表单。
+    //实现该功能需要获取表单元素对象，并绑定 `onsubmit` 事件
+    var reg_btn = document.getElementById("reg_btn");
+    reg_btn.onsubmit = function () {
+        var flag = checkUserName() && checkPassword() && checkTelPhone()
+
+        if (flag) {
+            //校验通过
+        }else {
+            //校验失败
+        }
+    };
+</script>
+
+</body>
+</html>
