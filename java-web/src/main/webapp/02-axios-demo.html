@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--必须引入这个js文件-->
+<script src="js/axios-0.18.0.js"></script>
+<script>
+    /*  为了方便起见， Axios 已经为所有支持的请求方法提供了别名。如下：
+         get请求： axios.get(url[,config])
+         delete请求： axios.delete(url[,config])
+         head请求： axios.head(url[,config])
+         options请求： axios.option(url[,config])
+         post请求：axios.post(url[,data[,config])
+         put请求：axios.put(url[,data[,config])
+         patch请求：axios.patch(url[,data[,config])
+    */
+
+
+    //1. get请求
+    //方式一：
+    /* axios({
+         method:"get",
+         url:"http://localhost:8080/java_web/axiosServlet?name=zhangsan&age=18"
+     }).then(function (resp) {
+         alert(resp.data);
+     })*/
+    //方式二：
+/*    axios.get("http://localhost:8080/java_web/axiosServlet?name=zhangsan&age=18")
+        .then(function (resp) {
+        alert(resp.data);
+    });*/
+
+
+
+    //2. post请求 在js中{} 表示一个js对象，而这个js对象中有三个属性
+    //方式一：
+    axios({
+        method: "post",
+        url: "http://localhost:8080/java_web/axiosServlet",
+        data: "name=fengzitao&age=23"
+    }).then(function (resp) {
+        alert(resp.data);
+    })
+    /*//方式二：
+    axios.post("http://localhost:8080/java_web/axiosServlet", "name=zhangsan&age=18")
+        .then(function (resp) {
+            alert(resp.data)
+        });*/
+
+
+
+</script>
+</body>
+</html>

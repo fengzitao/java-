@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="js/axios-0.18.0.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //parse(str)：将 JSON串转换为 js 对象。使用方式是：var jsObject = JSON.parse(jsonStr);
+        //stringify(obj)：将 js 对象转换为 JSON 串。使用方式是：var jsonStr = JSON.stringify(jsObject)
+
+        //1.定义json字符串
+        var jsonStr = '{"name": "zhangsan","age": 18,"addr": ["北京","深圳","广州"]}'
+        alert(jsonStr)
+
+        //2.将 JSON 字符串转为 JS 对象
+        let jsObject = JSON.parse(jsonStr);
+        alert(jsObject)
+        alert(jsObject.name + " " + jsObject.age + " " + jsObject.addr)
+
+        //3.将 JS 对象转换为 JSON 字符串
+        var jsonStr2 = JSON.stringify(jsObject);
+        alert(jsonStr2)
+
+
+        //发送异步请求时，如果请求参数是 `JSON` 格式，那请求方式必须是 `POST`。因为 `JSON` 串需要放在请求体中。
+        //`axios` 是一个很强大的工具。我们只需要将需要提交的参数封装成 js 对象，
+        //并将该 js 对象作为 `axios` 的 `data` 属性值进行，它会自动将 js 对象转换为 `JSON` 字符串进行提交。如下：
+        let jsObject2 = {
+            name: "张三",
+            age: 18
+        };
+        axios({
+            method:"post",
+            url:"http://localhost:8080/java_web/axiosServlet",
+            data: jsObject2  //这里 axios 会自动将该js对象转换为 json 字符串
+        }).then(function (resp) {
+            alert(resp.data);
+        })
+
+    </script>
+</body>
+</html>
